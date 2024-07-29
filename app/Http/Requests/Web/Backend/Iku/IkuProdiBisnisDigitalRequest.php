@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Web\Backend\Event;
+namespace App\Http\Requests\Web\Backend\Iku;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EventRequest extends FormRequest
+class IkuProdiBisnisDigitalRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,8 @@ class EventRequest extends FormRequest
     public function rules()
     {
         return [
-                'title' => 'required',
-                'thumbnail' => 'required',
-                'summary' => 'required',
-                'content' => 'required',
-                'date'=> 'required',
-                'slug'=>'required',
-
+            'title' => 'required',
+            'content' => 'required',
         ];
     }
 }

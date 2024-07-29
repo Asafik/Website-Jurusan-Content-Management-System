@@ -63,6 +63,14 @@
             });
         });
 
+        // Update data CKEditor saat form disubmit
+        document.querySelector('#eventForm').addEventListener('submit', function() {
+            // Update semua instance CKEditor yang ada
+            for (const instance in CKEDITOR.instances) {
+                CKEDITOR.instances[instance].updateElement();
+            }
+        });
+
         // Fungsi untuk mengubah string menjadi slug
         function stringToSlug(str) {
             return str.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');

@@ -272,6 +272,7 @@ class MenuSeeder extends Seeder
                 'is_active' => true,
                 'is_external_link' => false,
             ],
+
             [
                 'name' => 'Kemahasiswaan',
                 'link' => '#',
@@ -368,6 +369,17 @@ class MenuSeeder extends Seeder
                 'is_parent' => false,
                 'parent' => 0,
                 'level' => 1,
+                'link_target' => 'none',
+                'is_active' => true,
+                'is_external_link' => false,
+            ],
+                 [
+                'name' => 'Indikator Kinerja Utama',
+                'link' => 'indikator-kinerja-utama',
+                'order' => 9,
+                'is_parent' => false,
+                'parent' => 8,
+                'level' => 2,
                 'link_target' => 'none',
                 'is_active' => true,
                 'is_external_link' => false,

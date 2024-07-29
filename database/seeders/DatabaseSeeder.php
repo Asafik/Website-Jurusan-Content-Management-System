@@ -39,6 +39,10 @@ class DatabaseSeeder extends Seeder
             CooperationTypeSeeder::class,
             CooperationSeeder::class,
             AnnouncementSeeder::class,
+            IkuJurusanSeeder::class, // Tambahkan ini
+            IkuProdiTrplSeeder::class, // Tambahkan ini
+            IkuProdiTrkSeeder::class, // Tambahkan ini
+            IkuProdiBisnisDigitalSeeder::class, // Tambahkan ini
         ]);
     }
 }

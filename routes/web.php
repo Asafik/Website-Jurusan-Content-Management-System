@@ -23,6 +23,10 @@ use App\Http\Controllers\Web\Backend\User\PermissionController;
 use App\Http\Controllers\Web\Backend\User\RoleController;
 use App\Http\Controllers\Web\Backend\User\UserController;
 use App\Http\Controllers\Web\Frontend\Home\HomeController;
+use App\Http\Controllers\Web\Backend\Iku\IkuJurusanController;
+use App\Http\Controllers\Web\Backend\Iku\IkuProdiTrplController;
+use App\Http\Controllers\Web\Backend\Iku\IkuProdiTrkController;
+use App\Http\Controllers\Web\Backend\Iku\IkuProdiBisnisDigitalController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -63,6 +67,18 @@ Route::get('/jalur-masuk', [HomeController::class, 'jalurmasuk'])->name('fronten
 Route::get('/beasiswa', [HomeController::class, 'beasiswa'])->name('frontend.beasiswa');
 Route::get('/biaya-pendidikan', [HomeController::class, 'biaya'])->name('frontend.biaya');
 
+//iku Jurusan
+Route::get('/indikator-kinerja-utama', [HomeController::class, 'iku_jurusan_bi'])->name('frontend.iku_jurusan');
+Route::get('/load-iku-jurusan/{id}', [HomeController::class, 'loadIkuJurusan']);
+//iku trpl
+Route::get('/indikator-kinerja-utama-trpl', [HomeController::class, 'iku_prodi_trpl'])->name('frontend.iku_trpl');
+Route::get('/load-iku-prodi-trpl/{id}', [HomeController::class, 'loadIkuProdiTrpl']);
+//iku trk
+Route::get('/indikator-kinerja-utama-trk', [HomeController::class, 'iku_prodi_trk'])->name('frontend.iku_trk');
+Route::get('/load-iku-prodi-trk/{id}', [HomeController::class, 'loadIkuProdiTrk']);
+//iku bisnis digital
+Route::get('/indikator-kinerja-utama-bisnis-digital', [HomeController::class, 'iku_prodi_bisnis_digital'])->name('frontend.iku_bisnis_digital');
+Route::get('/load-iku-prodi-bisnis-digital/{id}', [HomeController::class, 'loadIkuProdiBisnisDigital']);
 // Kemahasiswaan
 Route::get('/prestasi-mahasiswa', [HomeController::class, 'presma'])->name('frontend./kemahasiswaan.presma');
 Route::get('/ormawa', [HomeController::class, 'ormawa'])->name('frontend.ormawa');
@@ -264,17 +280,17 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::delete('{cooperationField}/delete', [CooperationFieldController::class, 'destroy'])->name('cooperation-fields.delete')->middleware('can:delete-cooperation-fields');
         });
 
-   // Cooperation
-Route::prefix('cooperations')->middleware('can:read-cooperations')->group(function () {
-    Route::get('', [CooperationController::class, 'index'])->name('cooperations')->middleware('can:read-cooperations');
-    Route::get('get-data', [CooperationController::class, 'getData'])->name('cooperations.get-data')->middleware('can:read-cooperations');
-    Route::post('store', [CooperationController::class, 'store'])->name('cooperations.store')->middleware('can:create-cooperations');
-    Route::get('{cooperation}/show', [CooperationController::class, 'show'])->name('cooperations.update')->middleware('can:update-cooperations');
-    Route::post('{cooperation}/update', [CooperationController::class, 'update'])->name('cooperations.update')->middleware('can:update-cooperations');
-    Route::delete('{cooperation}/delete', [CooperationController::class, 'destroy'])->name('cooperations.delete')->middleware('can:delete-cooperations');
-    Route::get('{cooperation}/update-status', [CooperationController::class, 'updateStatus'])->name('cooperations.updateStatus')->middleware('can:update-cooperations');
+        // Cooperation
+        Route::prefix('cooperations')->middleware('can:read-cooperations')->group(function () {
+            Route::get('', [CooperationController::class, 'index'])->name('cooperations')->middleware('can:read-cooperations');
+            Route::get('get-data', [CooperationController::class, 'getData'])->name('cooperations.get-data')->middleware('can:read-cooperations');
+            Route::post('store', [CooperationController::class, 'store'])->name('cooperations.store')->middleware('can:create-cooperations');
+            Route::get('{cooperation}/show', [CooperationController::class, 'show'])->name('cooperations.update')->middleware('can:update-cooperations');
+            Route::post('{cooperation}/update', [CooperationController::class, 'update'])->name('cooperations.update')->middleware('can:update-cooperations');
+            Route::delete('{cooperation}/delete', [CooperationController::class, 'destroy'])->name('cooperations.delete')->middleware('can:delete-cooperations');
+            Route::get('{cooperation}/update-status', [CooperationController::class, 'updateStatus'])->name('cooperations.updateStatus')->middleware('can:update-cooperations');
 
-});
+        });
 
 
         // Partner
@@ -317,6 +333,48 @@ Route::prefix('cooperations')->middleware('can:read-cooperations')->group(functi
             Route::get('', [SettingController::class, 'index'])->name('settings');
             Route::post('', [SettingController::class, 'update'])->middleware('can:update-settings')->name('api.settings');
         });
+
+        // Indikator Kinerja Utama Jurusan
+        Route::prefix('iku-jurusans')->middleware('can:read-iku-jurusans')->group(function () {
+            Route::get('', [IkuJurusanController::class, 'index'])->name('iku-jurusans')->middleware('can:read-iku-jurusans');
+            Route::get('get-data', [IkuJurusanController::class, 'getData'])->name('iku-jurusans.get-data')->middleware('can:read-iku-jurusans');
+            Route::post('store', [IkuJurusanController::class, 'store'])->name('iku-jurusans.store')->middleware('can:create-iku-jurusans');
+            Route::get('{ikuJurusan}/show', [IkuJurusanController::class, 'show'])->name('iku-jurusans.show')->middleware('can:update-iku-jurusans');
+            Route::post('{ikuJurusan}/update', [IkuJurusanController::class, 'update'])->name('iku-jurusans.update')->middleware('can:update-iku-jurusans');
+            Route::delete('{ikuJurusan}/delete', [IkuJurusanController::class, 'destroy'])->name('iku-jurusans.delete')->middleware('can:delete-iku-jurusans');
+        });
+
+        // Indikator Kinerja Utama Program Studi TRPL
+        Route::prefix('iku-prodi-trpls')->middleware('can:read-iku-prodi-trpls')->group(function () {
+            Route::get('', [IkuProdiTrplController::class, 'index'])->name('iku-prodi-trpls')->middleware('can:read-iku-prodi-trpls');
+            Route::get('get-data', [IkuProdiTrplController::class, 'getData'])->name('iku-prodi-trpls.get-data')->middleware('can:read-iku-prodi-trpls');
+            Route::post('store', [IkuProdiTrplController::class, 'store'])->name('iku-prodi-trpls.store')->middleware('can:create-iku-prodi-trpls');
+            Route::get('{ikuProdiTrpl}/show', [IkuProdiTrplController::class, 'show'])->name('iku-prodi-trpls.show')->middleware('can:update-iku-prodi-trpls');
+            Route::post('{ikuProdiTrpl}/update', [IkuProdiTrplController::class, 'update'])->name('iku-prodi-trpls.update')->middleware('can:update-iku-prodi-trpls');
+            Route::delete('{ikuProdiTrpl}/delete', [IkuProdiTrplController::class, 'destroy'])->name('iku-prodi-trpls.delete')->middleware('can:delete-iku-prodi-trpls');
+        });
+
+        // Indikator Kinerja Utama Program Studi TRK
+        Route::prefix('iku-prodi-trks')->middleware('can:read-iku-prodi-trks')->group(function () {
+            Route::get('', [IkuProdiTrkController::class, 'index'])->name('iku-prodi-trks')->middleware('can:read-iku-prodi-trks');
+            Route::get('get-data', [IkuProdiTrkController::class, 'getData'])->name('iku-prodi-trks.get-data')->middleware('can:read-iku-prodi-trks');
+            Route::post('store', [IkuProdiTrkController::class, 'store'])->name('iku-prodi-trks.store')->middleware('can:create-iku-prodi-trks');
+            Route::get('{ikuProdiTrk}/show', [IkuProdiTrkController::class, 'show'])->name('iku-prodi-trks.show')->middleware('can:update-iku-prodi-trks');
+            Route::post('{ikuProdiTrk}/update', [IkuProdiTrkController::class, 'update'])->name('iku-prodi-trks.update')->middleware('can:update-iku-prodi-trks');
+            Route::delete('{ikuProdiTrk}/delete', [IkuProdiTrkController::class, 'destroy'])->name('iku-prodi-trks.delete')->middleware('can:delete-iku-prodi-trks');
+        });
+
+        // Indikator Kinerja Utama Program Studi Bisnis Digital
+        Route::prefix('iku-prodi-bisnis-digitals')->middleware('can:read-iku-prodi-bisnis-digitals')->group(function () {
+            Route::get('', [IkuProdiBisnisDigitalController::class, 'index'])->name('iku-prodi-bisnis-digitals')->middleware('can:read-iku-prodi-bisnis-digitals');
+            Route::get('get-data', [IkuProdiBisnisDigitalController::class, 'getData'])->name('iku-prodi-bisnis-digitals.get-data')->middleware('can:read-iku-prodi-bisnis-digitals');
+            Route::post('store', [IkuProdiBisnisDigitalController::class, 'store'])->name('iku-prodi-bisnis-digitals.store')->middleware('can:create-iku-prodi-bisnis-digitals');
+            Route::get('{ikuProdiBisnisDigital}/show', [IkuProdiBisnisDigitalController::class, 'show'])->name('iku-prodi-bisnis-digitals.show')->middleware('can:update-iku-prodi-bisnis-digitals');
+            Route::post('{ikuProdiBisnisDigital}/update', [IkuProdiBisnisDigitalController::class, 'update'])->name('iku-prodi-bisnis-digitals.update')->middleware('can:update-iku-prodi-bisnis-digitals');
+            Route::delete('{ikuProdiBisnisDigital}/delete', [IkuProdiBisnisDigitalController::class, 'destroy'])->name('iku-prodi-bisnis-digitals.delete')->middleware('can:delete-iku-prodi-bisnis-digitals');
+        });
+
+
     });
 });
 

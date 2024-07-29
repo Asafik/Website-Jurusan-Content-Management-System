@@ -108,6 +108,29 @@ class PermissionSeeder extends Seeder
             ['name' => 'update-events', 'label' => 'Update Event'],
             ['name' => 'delete-events', 'label' => 'Hapus Event'],
 
+             // Indikator Kinerja Utama Jurusan related permissions
+            ['name' => 'read-iku-jurusans', 'label' => 'Baca Indikator Kinerja Utama Jurusan'],
+            ['name' => 'create-iku-jurusans', 'label' => 'Buat Indikator Kinerja Utama Jurusan'],
+            ['name' => 'update-iku-jurusans', 'label' => 'Update Indikator Kinerja Utama Jurusan'],
+            ['name' => 'delete-iku-jurusans', 'label' => 'Hapus Indikator Kinerja Utama Jurusan'],
+
+            // Indikator Kinerja Utama Program Studi TRPL
+            ['name' => 'read-iku-prodi-trpls', 'label' => 'Baca Indikator Kinerja Utama Program Studi TRPL'],
+            ['name' => 'create-iku-prodi-trpls', 'label' => 'Buat Indikator Kinerja Utama Program Studi TRPL'],
+            ['name' => 'update-iku-prodi-trpls', 'label' => 'Update Indikator Kinerja Utama Program Studi TRPL'],
+            ['name' => 'delete-iku-prodi-trpls', 'label' => 'Hapus Indikator Kinerja Utama Program Studi TRPL'],
+
+             // Indikator Kinerja Utama Program Studi TRK
+            ['name' => 'read-iku-prodi-trks', 'label' => 'Baca Indikator Kinerja Utama Program Studi TRK'],
+            ['name' => 'create-iku-prodi-trks', 'label' => 'Buat Indikator Kinerja Utama Program Studi TRK'],
+            ['name' => 'update-iku-prodi-trks', 'label' => 'Update Indikator Kinerja Utama Program Studi TRK'],
+            ['name' => 'delete-iku-prodi-trks', 'label' => 'Hapus Indikator Kinerja Utama Program Studi TRK'],
+
+             // Indikator Kinerja Utama Program Studi Bisnis Digital
+            ['name' => 'read-iku-prodi-bisnis-digitals', 'label' => 'Baca Indikator Kinerja Utama Program Studi Bisnis Digital'],
+            ['name' => 'create-iku-prodi-bisnis-digitals', 'label' => 'Buat Indikator Kinerja Utama Program Studi Bisnis Digital'],
+            ['name' => 'update-iku-prodi-bisnis-digitals', 'label' => 'Update Indikator Kinerja Utama Program Studi Bisnis Digital'],
+            ['name' => 'delete-iku-prodi-bisnis-digitals', 'label' => 'Hapus Indikator Kinerja Utama Program Studi Bisnis Digital'],
 
             # Users related permission
             ['name' => 'read-users', 'label' => 'Baca User'],

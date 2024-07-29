@@ -22,7 +22,7 @@
 
                     <div class="form-group">
                         <label for="description">Detail Kejuaraan <span class="text-danger">*</span></label>
-                        <textarea name="description" id="description" class="form-control" placeholder="Deskripsi" autocomplete="off"></textarea>
+                        <textarea name="description" id="description" class="form-control" placeholder="Deskripsi" rows="5" autocomplete="off"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -79,10 +79,13 @@
     @parent
     <script src="{{ asset('assets/backend/ckeditor/ckeditor.js') }}"></script>
     <script>
+        // Inisialisasi Dropify
         $('#dropify').dropify();
 
-        // Inisialisasi CKEditor untuk textarea konten
-        var editor = CKEDITOR.replace('description');
+        // Inisialisasi CKEditor untuk textarea description
+        var editor = CKEDITOR.replace('description', {
+            // Konfigurasi CKEditor, jika diperlukan
+        });
 
         // Menyembunyikan notifikasi peringatan
         editor.on('instanceReady', function() {
@@ -93,31 +96,37 @@
             });
         });
 
-        // Fungsi untuk membuat slug
-        function string_to_slug(str) {
-            str = str.replace(/^\s+|\s+$/g, ''); // trim
-            str = str.toLowerCase();
+        // Fungsi untuk membuat slug dari string
+        function stringToSlug(str) {
+            str = str.trim().toLowerCase();
 
-            // menghapus aksara dan mengganti spasi dengan -
+            // Menghapus aksara dan mengganti spasi dengan -
             var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
             var to   = "aaaaeeeeiiiioooouuuunc------";
-            for (var i=0, l=from.length ; i<l ; i++) {
+            for (var i = 0, l = from.length; i < l; i++) {
                 str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
             }
 
-            str = str.replace(/[^a-z0-9 -]/g, '') // menghapus karakter yang tidak valid
-                .replace(/\s+/g, '-') // ganti spasi dengan -
-                .replace(/-+/g, '-'); // gabungkan dash
+            str = str.replace(/[^a-z0-9 -]/g, '') // Menghapus karakter yang tidak valid
+                .replace(/\s+/g, '-') // Mengganti spasi dengan -
+                .replace(/-+/g, '-'); // Menggabungkan dash
 
             return str;
         }
 
-        // Event ketika nilai pada input nama prestasi berubah
+        // Event listener untuk mengupdate slug berdasarkan judul prestasi
         $('#title').on('input', function() {
             var title = $(this).val();
-            var slug = string_to_slug(title);
-            $('#slug').val(slug); // Memperbarui nilai input tersembunyi
+            var slug = stringToSlug(title);
+            $('#slug').val(slug); // Memperbarui nilai input slug
         });
 
+        // Update data CKEditor saat form disubmit
+        document.querySelector('#achievementForm').addEventListener('submit', function() {
+            // Update semua instance CKEditor yang ada
+            for (const instance in CKEDITOR.instances) {
+                CKEDITOR.instances[instance].updateElement();
+            }
+        });
     </script>
 @endsection

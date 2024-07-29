@@ -93,25 +93,7 @@ $('.add').on('click', function () {
     $('#achievementModal form').attr('action', `${window.location.href}/store`);
 });
 
-// function editAchievement(id) {
-//     $('#achievementModal form').attr('action', `${window.location.href}/${id}/update`);
-//     $("#achievementForm")[0].reset()
-//     fetch(`${window.location.href}/${id}/show`)
-//         .then(res => res.json())
-//         .then(data => {
-//             resetInvalid();
-//             $('#achievementModal .modal-title').html('Edit Prestasi');
-//             $('#title').val(data.data.title);
-//             $('#location').val(data.data.location);
-//             $('#achievement_type_id').val(data.achievement_type_id);
-//             $('#achievement_level_id').val(data.achievement_level_id);
-//             $('#date').val(data.data.date);
-//             $('#description').val(data.data.description);
-//             $('#slug').val(data.data.slug);
-//             $('image').val(data.data.image);
-//             $('#achievementModal').modal('show');
-//         });
-// }
+
 
 function editAchievement(id) {
     $('#achievementModal form').attr('action', `${window.location.href}/${id}/update`);
@@ -127,6 +109,9 @@ function editAchievement(id) {
             $('#achievement_level_id').val(data.achievement_level_id);
             $('#date').val(data.data.date);
             $('#description').val(data.data.description);
+            $('#achievement_program_studi_id').val(data.achievement_program_studi_id);
+            $('#slug').val(data.data.slug);
+
 
             // Destroy existing CKEditor instance if exists
             if (CKEDITOR.instances['description']) {

@@ -158,9 +158,42 @@
             <li class=" nav-item">
                 <a data-toggle="ajax" href="events">
                     <i class="feather icon-calendar"></i>
-                    <span class="menu-item" data-i18n="Event">Event</span>
+                    <span class="menu-item" data-i18n="Event">Berita & Event</span>
                 </a>
             </li>
+
+            @canany(['read-iku-jurusans', 'read-iku-prodi-trpls', 'read-iku-prodi-trks', 'read-iku-prodi-bisnis-digitals'])
+            <li class="nav-item">
+                <a href="#"><i class="feather icon-book"></i><span class="menu-title" data-i18n="IKU">Indikator Kinerja Utama</span></a>
+                <ul class="menu-content">
+                    @can('read-iku-jurusans')
+                        <li><a href="{{ route('iku-jurusans') }}" data-toggle="ajax">
+                                <i class="feather icon-circle"></i><span class="menu-item" data-i18n="IKU Jurusan">Jurusan</span></a>
+                        </li>
+                    @endcan
+                    @can('read-iku-prodi-trpls')
+                        <li><a href="{{ route('iku-prodi-trpls') }}" data-toggle="ajax">
+                                <i class="feather icon-circle"></i><span class="menu-item" data-i18n="IKU Prodi">Prodi TRPL</span></a>
+                        </li>
+                    @endcan
+                    @can('read-iku-prodi-trks')
+                        <li><a href="{{ route('iku-prodi-trks') }}" data-toggle="ajax">
+                                <i class="feather icon-circle"></i><span class="menu-item" data-i18n="IKU Prodi">Prodi TRK</span></a>
+                        </li>
+                    @endcan
+                    @can('read-iku-prodi-bisnis-digitals')
+                        <li><a href="{{ route('iku-prodi-bisnis-digitals') }}" data-toggle="ajax">
+                                <i class="feather icon-circle"></i><span class="menu-item" data-i18n="IKU Bisnis Digital">Prodi Bisnis Digital</span></a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcanany
+
+
+
+
+
             <li class="navigation-header">
                 <span>Site</span>
             </li>

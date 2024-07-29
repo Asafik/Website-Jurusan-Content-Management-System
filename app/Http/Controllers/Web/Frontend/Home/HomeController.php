@@ -8,13 +8,19 @@ use App\Models\Document;
 use App\Models\Employee;
 use App\Models\EmployeeType;
 use App\Models\Event;
+use App\Models\IkuJurusan;
+use App\Models\IkuProdiTrpl;
+use App\Models\IkuProdiTrk;
+use App\Models\IkuProdiBisnisDigital;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Achievement;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 
 use App\Models\Page; // Import model Page
 class HomeController extends Controller
+
 {
 
 
@@ -241,6 +247,111 @@ class HomeController extends Controller
 
         return view('frontend.home./akademik.biaya', $data);
     }
+
+
+    //Indikator Kinerja Utama Jurusan
+    public function iku_jurusan_bi()
+    {
+        $ikus = IkuJurusan::all();
+        $data = [
+            'title' => 'Indikator Kinerja Utama Jurusan',
+            'ikus' => $ikus
+        ];
+
+        return view('frontend.home.akademik.iku_jurusan', $data);
+    }
+
+
+    public function loadIkuJurusan($id)
+    {
+        Log::info('loadIkuJurusan called with id: ' . $id);
+
+        $iku = IkuJurusan::find($id);
+        if ($iku) {
+            Log::info('IkuJurusan found: ' . $iku->content);
+            return response()->json(['content' => $iku->content]);
+        }
+        Log::warning('IkuJurusan not found with id: ' . $id);
+        return response()->json(['content' => 'Halaman tidak ditemukan.']);
+    }
+
+    //Indikator Kinerja Utama TRPL
+    public function iku_prodi_trpl()
+    {
+
+        $trpls = IkuProdiTrpl::all();  // Mengganti IkuJurusan dengan IkuProdiTrpl
+        $data = [
+            'title' => 'Indikator Kinerja Utama Program Studi Rekayasa Perangkat Lunak',
+            'trpls' => $trpls
+        ];
+
+        return view('frontend.home.akademik.iku_trpl', $data);
+    }
+
+        public function loadIkuProdiTrpl($id)
+    {
+        Log::info('loadIkuProdiTrpl called with id: ' . $id);  // Mengganti nama method
+
+        $trpl = IkuProdiTrpl::find($id);  // Mengganti IkuJurusan dengan IkuProdiTrpl
+        if ($trpl) {
+            Log::info('IkuProdiTrpl found: ' . $trpl->content);  // Mengganti nama variabel
+            return response()->json(['content' => $trpl->content]);
+        }
+        Log::warning('IkuProdiTrpl not found with id: ' . $id);  // Mengganti nama variabel
+        return response()->json(['content' => 'Halaman tidak ditemukan.']);
+    }
+
+    //Indikator Kinerja Utama TRK
+    public function iku_prodi_trk()
+    {
+        $trks = IkuProdiTrk::all();  // Mengganti IkuProdiTrpl dengan IkuProdiTrk
+        $data = [
+            'title' => 'Indikator Kinerja Utama Program Studi Teknik Komputer',
+            'trks' => $trks
+        ];
+
+        return view('frontend.home.akademik.iku_trk', $data);
+    }
+
+        public function loadIkuProdiTrk($id)
+    {
+        Log::info('loadIkuProdiTrk called with id: ' . $id);  // Mengganti nama method
+
+        $trk = IkuProdiTrk::find($id);  // Mengganti IkuProdiTrpl dengan IkuProdiTrk
+        if ($trk) {
+            Log::info('IkuProdiTrk found: ' . $trk->content);  // Mengganti nama variabel
+            return response()->json(['content' => $trk->content]);
+        }
+        Log::warning('IkuProdiTrk not found with id: ' . $id);  // Mengganti nama variabel
+        return response()->json(['content' => 'Halaman tidak ditemukan.']);
+    }
+
+    //Indikator Kinerja Utama Bisnia Digital
+     public function iku_prodi_bisnis_digital()
+     {
+
+        $bisnisDigitals = IkuProdiBisnisDigital::all();  // Mengganti IkuProdiTrk dengan IkuProdiBisnisDigital
+        $data = [
+            'title' => 'Indikator Kinerja Utama Program Studi Bisnis Digital',
+            'bisnisDigitals' => $bisnisDigitals
+        ];
+
+         return view('frontend.home.akademik.iku_bisnis_digital', $data);
+     }
+
+        public function loadIkuProdiBisnisDigital($id)
+    {
+        Log::info('loadIkuProdiBisnisDigital called with id: ' . $id);  // Mengganti nama method
+
+        $bisnisDigital = IkuProdiBisnisDigital::find($id);  // Mengganti IkuProdiTrk dengan IkuProdiBisnisDigital
+        if ($bisnisDigital) {
+            Log::info('IkuProdiBisnisDigital found: ' . $bisnisDigital->content);  // Mengganti nama variabel
+            return response()->json(['content' => $bisnisDigital->content]);
+        }
+        Log::warning('IkuProdiBisnisDigital not found with id: ' . $id);  // Mengganti nama variabel
+        return response()->json(['content' => 'Halaman tidak ditemukan.']);
+    }
+
 
     // Kemahasiswaan
     public function presma()

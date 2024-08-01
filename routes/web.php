@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Web\Frontend\Home\HomeController;
+use App\Http\Controllers\Web\Frontend\Home\PublikasiController;
+
 use App\Http\Controllers\Web\Backend\Achievement\AchievementController;
 use App\Http\Controllers\Web\Backend\Achievement\AchievementLevelController;
 use App\Http\Controllers\Web\Backend\Achievement\AchievementTypeController;
@@ -22,7 +25,6 @@ use App\Http\Controllers\Web\Backend\Setting\SettingController;
 use App\Http\Controllers\Web\Backend\User\PermissionController;
 use App\Http\Controllers\Web\Backend\User\RoleController;
 use App\Http\Controllers\Web\Backend\User\UserController;
-use App\Http\Controllers\Web\Frontend\Home\HomeController;
 use App\Http\Controllers\Web\Backend\Iku\IkuJurusanController;
 use App\Http\Controllers\Web\Backend\Iku\IkuProdiTrplController;
 use App\Http\Controllers\Web\Backend\Iku\IkuProdiTrkController;
@@ -88,7 +90,11 @@ Route::get('/kehidupan-kampus', [HomeController::class, 'kehidupan'])->name('fro
 Route::get('/dokumen', [HomeController::class, 'document'])->name('frontend.document');
 
 
-Route::get('/publikasi-jurusan', [HomeController::class, 'publikasijurusan'])->name('frontend.publikasi_jurusan');
+Route::get('/publikasi-jurusan', [PublikasiController::class, 'publikasijurusan'])->name('frontend.publikasi_jurusan');
+Route::get('/publikasi-prodi-trpl', [PublikasiController::class, 'publikasiproditrpl'])->name('frontend.publikasi_prodi_trpl');
+Route::get('/publikasi-prodi-trk', [PublikasiController::class, 'publikasiproditrk'])->name('frontend.publikasi_prodi_trk');
+Route::get('/publikasi-prodi-bsd', [PublikasiController::class, 'publikasiprodibsd'])->name('frontend.publikasi_prodi_bsd');
+
 
 
 

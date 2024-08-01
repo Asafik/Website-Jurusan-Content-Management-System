@@ -60,7 +60,17 @@
                                 <img src="assets/frontend/assets/img/web/akreditasi.jpg" alt="Sertifikat Akreditasi" width="400px">
                             </a>
                             <hr>
-                            <a class="btn btn-primary" href="https://trk.poliwangi.ac.id/" role="button" target="_blank">Lihat Program Studi TRK</a>
+
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Lihat Program Studi TRK
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="https://trk.poliwangi.ac.id/" target="_blank">Lihat Website Program Studi TRK</a>
+                                  <a class="dropdown-item" href="/publikasi-prodi-trk" target="_blank">Lihat Publikasi Program Studi TRK</a>
+                                </div>
+                              </div>
+                            <br>
 
                             <ul style="list-style-type: number; margin: 20px; text-align: justify;">
                             <strong>Keunggulan Program Studi D-IV Teknik Rekayasa Komputer</strong>

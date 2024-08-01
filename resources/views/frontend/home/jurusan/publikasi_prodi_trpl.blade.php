@@ -8,7 +8,7 @@
             <div class="col-md-9 col-lg-8">
                 <div class="section-heading text-center text-white">
                     <h2 class="text-white">Publikasi Penelitian Dan Pengabdian</h2>
-                    <p class="lead">Jurusan Bisnis Dan Informatika Politeknik Negeri Banyuwangi</p>
+                    <p class="lead">Prodi Teknologi Rekayasa Perangkat Lunak Jurusan Bisnis Dan Informatika</p>
                 </div>
             </div>
         </div>

@@ -59,7 +59,18 @@
                                 <img src="assets/frontend/assets/img/web/akreditasi.jpg" alt="Sertifikat Akreditasi" width="400px">
                             </a>
                             <hr>
-                            <a class="btn btn-primary" href="https://bisnisdigital.poliwangi.ac.id/" role="button" target="_blank">Lihat Program Studi Bisnis Digital</a>
+
+
+
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Lihat Program Studi Bisnis Digital
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="https://bisnisdigital.poliwangi.ac.id/" target="_blank">Lihat Website Program Studi Bisnis Digital</a>
+                                  <a class="dropdown-item" href="/publikasi-prodi-bsd" target="_blank">Lihat Publikasi Program Studi isnis Digital</a>
+                                </div>
+                              </div>
 
                             <ul style="list-style-type: number; margin: 20px; text-align: justify;">
                                 <strong>Keunggulan Program Studi S1 Terapan Bisnis Digital</strong>

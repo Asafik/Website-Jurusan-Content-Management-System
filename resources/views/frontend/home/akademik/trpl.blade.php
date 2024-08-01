@@ -53,8 +53,16 @@
                                 <img src="assets/frontend/assets/img/web/akreditasi.jpg" alt="Sertifikat Akreditasi" width="400px">
                             </a>
                             <hr>
-                            <a class="btn btn-primary" href="https://trpl.poliwangi.ac.id/" role="button" target="_blank">Lihat Program Studi TRPL</a>
 
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Lihat Program Studi TRPL
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="https://trpl.poliwangi.ac.id/" target="_blank">Lihat Website Program Studi TRPL</a>
+                                  <a class="dropdown-item" href="/publikasi-prodi-trpl" target="_blank">Lihat Publikasi Program Studi TRPL</a>
+                                </div>
+                              </div>
                             <br>
 
                             <br>
